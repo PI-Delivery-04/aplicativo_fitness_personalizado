@@ -3,9 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { Meta } from './meta/entities/meta.entitys';
+import { MetaModule } from './meta/meta.module';  
 
 @Module({
-  imports: [
+imports: [    
     ConfigModule.forRoot({
           isGlobal: true,
     }),
@@ -16,12 +18,12 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [],
+      entities: [Meta],
       synchronize: true,
-    }),
-
+}),
+  MetaModule,
 ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
