@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { Treino } from './treino/entities/treino.entity';
 import { TreinoModule } from './treino/treino.module';
+import { Meta } from './meta/entities/meta.entitys';
+import { MetaModule } from './meta/meta.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-          isGlobal: true,
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -18,12 +18,13 @@ import { TreinoModule } from './treino/treino.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Treino],
+      entities: [Treino, Meta],
       synchronize: true,
     }),
-    TreinoModule
-],
+    TreinoModule,
+    MetaModule
+  ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
