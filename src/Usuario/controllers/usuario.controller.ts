@@ -41,4 +41,11 @@ export class UsuarioController {
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.usuarioService.delete(id);
   }
+
+  //Método para cálculo do IMC
+  @Get('/imc/:id')
+  @HttpCode(HttpStatus.OK)
+  imc(@Param('id', ParseIntPipe) id: number): Promise<any> {
+    return this.usuarioService.imc(id);
+  }
 }
