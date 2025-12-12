@@ -3,14 +3,14 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Usuario } from "../../usuario/entities/usuario.entity";
 
 
-@Entity({ name: 'tb_treino' })
+@Entity({ name: 'tb_treinos' })
 export class Treino {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @IsNotEmpty()
-    @Column({ length: 100, nullable: false })
+    @Column({ length: 3000, nullable: false })
     exercicio: string;
 
     @IsNotEmpty()

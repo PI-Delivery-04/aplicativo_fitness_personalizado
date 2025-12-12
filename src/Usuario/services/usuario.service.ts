@@ -51,6 +51,7 @@ export class UsuarioService {
     }
 
     async create(usuario: Usuario): Promise<Usuario> {
+        //console.log(usuario)
         return await this.usuarioRepository.save(usuario);
     }
 

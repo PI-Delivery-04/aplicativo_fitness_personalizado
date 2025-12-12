@@ -28,7 +28,7 @@ export class Usuario {
   idade: number;
 
   @IsNotEmpty()
-  @Column({ type: 'decimal', precision: 5, scale: 2 })
+  @Column({ type: 'decimal', precision: 3, scale: 1 })
   peso: number;
 
   @IsNotEmpty()
