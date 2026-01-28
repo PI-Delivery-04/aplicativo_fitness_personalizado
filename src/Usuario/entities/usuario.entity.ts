@@ -1,23 +1,21 @@
-import { IsEAN, IsEmail, IsNotEmpty } from "class-validator"
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
-import { Treino } from "../../treino/entities/treino.entity"
-import { Meta } from "../../meta/entities/meta.entitys"
+import { IsEAN, IsEmail, IsNotEmpty } from 'class-validator';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Treino } from '../../treino/entities/treino.entity';
+import { Meta } from '../../meta/entities/meta.entity';
 
-
-@Entity({ name: "tb_usuarios" })
+@Entity({ name: 'tb_usuarios' })
 export class Usuario {
-
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @IsNotEmpty()
   @Column({ length: 100, nullable: false })
-  nome: string
+  nome: string;
 
   @IsNotEmpty()
   @IsEmail()
   @Column({ length: 150, nullable: false })
-  email: string
+  email: string;
 
   @IsNotEmpty()
   @Column({ length: 20, nullable: false })
@@ -36,14 +34,12 @@ export class Usuario {
   altura: number;
 
   @ManyToOne(() => Treino, (treino) => treino.usuario, {
-    onDelete: "CASCADE"
+    onDelete: 'CASCADE',
   })
   treino: Treino;
 
   @ManyToOne(() => Meta, (meta) => meta.usuario, {
-    onDelete: "CASCADE"
+    onDelete: 'CASCADE',
   })
-  meta: Meta
-
+  meta: Meta;
 }
-

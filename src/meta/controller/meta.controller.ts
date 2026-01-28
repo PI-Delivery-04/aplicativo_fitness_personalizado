@@ -1,11 +1,21 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
-import { MetaService } from "../services/meta.service";
-import { Meta } from "../entities/meta.entitys";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { MetaService } from '../services/meta.service';
+import { Meta } from '../entities/meta.entity';
 
-
-@Controller("/meta")
+@Controller('/meta')
 export class MetaController {
-  constructor(private readonly metaService: MetaService) { }
+  constructor(private readonly metaService: MetaService) {}
 
   //Listar todos
   @Get()
@@ -33,7 +43,7 @@ export class MetaController {
   @HttpCode(HttpStatus.OK)
   async update(
     // @Param('id') id: number,
-    @Body() meta: Meta
+    @Body() meta: Meta,
   ): Promise<Meta> {
     return await this.metaService.update(meta);
   }
@@ -44,6 +54,4 @@ export class MetaController {
   async delete(@Param('id') id: number): Promise<void> {
     return await this.metaService.delete(id);
   }
-
-
 }

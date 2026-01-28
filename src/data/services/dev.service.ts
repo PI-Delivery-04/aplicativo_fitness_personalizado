@@ -3,7 +3,7 @@ import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
 import { Usuario } from '../../usuario/entities/usuario.entity';
 import { Treino } from '../../treino/entities/treino.entity';
-import { Meta } from '../../meta/entities/meta.entitys';
+import { Meta } from '../../meta/entities/meta.entity';
 
 @Injectable()
 export class DevService implements TypeOrmOptionsFactory {
